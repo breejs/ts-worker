@@ -10,7 +10,13 @@
 
 > Typescript workers plugin for Bree!
 
+
 ## Table of Contents
+
+* [Install](#install)
+* [Usage](#usage)
+* [Contributors](#contributors)
+* [License](#license)
 
 
 ## Install
@@ -42,8 +48,14 @@ console.log(@breejs/tsWorker.renderName());
 
 ## Contributors
 
+| Name              | Website                           |
+| ----------------- | --------------------------------- |
+| **Taylor Schley** | <https://github.com/shadowgate15> |
+
 
 ## License
+
+[MIT](LICENSE) © [Taylor Schley](https://github.com/shadowgate15)
 
 
 ##

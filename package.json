@@ -7,16 +7,28 @@
     "url": "https://github.com/breejs/ts-worker/issues",
     "email": "taylorschley@me.com"
   },
+  "ava": {
+    "files": [
+      "test/*.js",
+      "test/**/*.js",
+      "!test/jobs"
+    ],
+    "verbose": true
+  },
   "contributors": [
     "Taylor Schley <taylorschley@me.com> (https://github.com/shadowgate15)"
   ],
-  "dependencies": {},
+  "dependencies": {
+    "ts-node": "^10.4.0"
+  },
   "devDependencies": {
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "ava": "latest",
+    "bree": "^6.4.0",
     "codecov": "latest",
     "cross-env": "latest",
+    "delay": "^5.0.0",
     "eslint": "latest",
     "eslint-config-xo-lass": "latest",
     "fixpack": "latest",
@@ -28,7 +40,7 @@
     "xo": "latest"
   },
   "engines": {
-    "node": ">= 10"
+    "node": ">= 12.11.0"
   },
   "homepage": "https://github.com/breejs/ts-worker",
   "keywords": [
