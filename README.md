@@ -36,13 +36,14 @@ yarn add @breejs/ts-worker
 
 ## Usage
 
+> **Note:** You must be using Bree v6.5.0 or greater!
+
+Extend bree with the plugin:
+
 ```js
-const @breejs/tsWorker = require('@breejs/ts-worker');
+Bree.extend(require('@breejs/ts-worker'));
 
-const @breejs/tsWorker = new @breejs/tsWorker();
-
-console.log(@breejs/tsWorker.renderName());
-// script
+const bree = new Bree(config);
 ```
 
 
