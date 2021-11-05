@@ -42,6 +42,9 @@
   "engines": {
     "node": ">= 12.11.0"
   },
+  "files": [
+    "src"
+  ],
   "homepage": "https://github.com/breejs/ts-worker",
   "keywords": [
     "bree",
