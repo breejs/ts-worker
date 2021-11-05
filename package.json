@@ -25,7 +25,7 @@
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "ava": "latest",
-    "bree": "^6.4.0",
+    "bree": "^6.5.0",
     "codecov": "latest",
     "cross-env": "latest",
     "delay": "^5.0.0",
