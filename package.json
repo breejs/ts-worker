@@ -3,10 +3,6 @@
   "description": "Typescript workers plugin for Bree!",
   "version": "1.0.0",
   "author": "Taylor Schley <taylorschley@me.com> (https://github.com/shadowgate15)",
-  "bugs": {
-    "url": "https://github.com/breejs/ts-worker/issues",
-    "email": "taylorschley@me.com"
-  },
   "ava": {
     "files": [
       "test/*.js",
@@ -14,6 +10,10 @@
       "!test/jobs"
     ],
     "verbose": true
+  },
+  "bugs": {
+    "url": "https://github.com/breejs/ts-worker/issues",
+    "email": "taylorschley@me.com"
   },
   "contributors": [
     "Taylor Schley <taylorschley@me.com> (https://github.com/shadowgate15)"
@@ -25,14 +25,14 @@
     "@commitlint/cli": "latest",
     "@commitlint/config-conventional": "latest",
     "ava": "latest",
-    "bree": "^6.5.0",
+    "bree": "latest",
     "codecov": "latest",
     "cross-env": "latest",
     "delay": "^5.0.0",
     "eslint": "latest",
     "eslint-config-xo-lass": "latest",
     "fixpack": "latest",
-    "husky": "latest",
+    "husky": "^7.0.0",
     "lint-staged": "latest",
     "nyc": "latest",
     "remark-cli": "latest",
@@ -70,6 +70,7 @@
     "lint": "yarn run lint:js && yarn run lint:md",
     "lint:js": "xo",
     "lint:md": "remark . -qfo",
+    "prepare": "husky install",
     "pretest": "yarn run lint",
     "test": "cross-env NODE_ENV=test ava",
     "test-coverage": "cross-env NODE_ENV=test nyc yarn run test"
