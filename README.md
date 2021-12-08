@@ -1,6 +1,6 @@
 # @breejs/ts-worker
 
-[![build status](https://img.shields.io/travis/com/breejs/ts-worker.svg)](https://travis-ci.com/breejs/ts-worker)
+[![build status](https://github.com/breejs/ts-worker/actions/workflows/ci.yml/badge.svg)](https://github.com/breejs/ts-worker/actions/workflows/ci.yml)
 [![code coverage](https://img.shields.io/codecov/c/github/breejs/ts-worker.svg)](https://codecov.io/gh/breejs/ts-worker)
 [![code style](https://img.shields.io/badge/code_style-XO-5ed9c7.svg)](https://github.com/sindresorhus/xo)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
