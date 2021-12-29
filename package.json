@@ -29,6 +29,7 @@
     "codecov": "latest",
     "cross-env": "latest",
     "delay": "^5.0.0",
+    "dtslint": "^4.2.1",
     "eslint": "latest",
     "eslint-config-xo-lass": "latest",
     "fixpack": "latest",
@@ -43,7 +44,8 @@
     "node": ">= 12.11.0"
   },
   "files": [
-    "src"
+    "src",
+    "types/index.d.ts"
   ],
   "homepage": "https://github.com/breejs/ts-worker",
   "keywords": [
@@ -58,6 +60,9 @@
   ],
   "license": "MIT",
   "main": "src/index.js",
+  "peerDependencies": {
+    "bree": "7.x"
+  },
   "publishConfig": {
     "access": "public"
   },
@@ -66,15 +71,18 @@
     "url": "https://github.com/breejs/ts-worker"
   },
   "scripts": {
+    "ava": "cross-env NODE_ENV=test ava",
     "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
+    "dtslint": "cross-env NODE_ENV=test dtslint types",
     "lint": "yarn run lint:js && yarn run lint:md",
     "lint:js": "xo",
     "lint:md": "remark . -qfo",
     "prepare": "husky install",
     "pretest": "yarn run lint",
-    "test": "cross-env NODE_ENV=test ava",
+    "test": "yarn run ava && yarn run dtslint",
     "test-coverage": "cross-env NODE_ENV=test nyc yarn run test"
   },
+  "types": "types",
   "xo": {
     "prettier": true,
     "space": true,
@@ -84,6 +92,30 @@
     "rules": {
       "import/extensions": "off",
       "unicorn/prefer-module": "off"
-    }
+    },
+    "overrides": [
+      {
+        "files": [
+          "*.ts"
+        ],
+        "parserOptions": {
+          "project": [
+            "types/tsconfig.json"
+          ]
+        }
+      },
+      {
+        "files": [
+          "types/tests.ts"
+        ],
+        "rules": {
+          "@typescript-eslint/no-unused-vars": "off",
+          "@typescript-eslint/no-empty-function": "off",
+          "@typescript-eslint/no-unsafe-assignment": "off",
+          "@typescript-eslint/no-unsafe-call": "off"
+        }
+      }
+    ],
+    "parser": "@typescript-eslint/parser"
   }
 }
