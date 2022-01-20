@@ -63,7 +63,7 @@
   "main": "src/index.js",
   "peerDependencies": {
     "bree": ">=7.0.0",
-    "tsconfig-paths": ">=3<4"
+    "tsconfig-paths": ">=3 <4"
   },
   "publishConfig": {
     "access": "public"
