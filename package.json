@@ -38,6 +38,7 @@
     "nyc": "latest",
     "remark-cli": "latest",
     "remark-preset-github": "latest",
+    "tsconfig-paths": "latest",
     "xo": "latest"
   },
   "engines": {
@@ -61,7 +62,8 @@
   "license": "MIT",
   "main": "src/index.js",
   "peerDependencies": {
-    "bree": "7.x"
+    "bree": "7.x",
+    "tsconfig-paths": "3.x"
   },
   "publishConfig": {
     "access": "public"
