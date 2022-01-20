@@ -1,7 +1,7 @@
 {
   "name": "@breejs/ts-worker",
   "description": "Typescript workers plugin for Bree!",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "author": "Taylor Schley <taylorschley@me.com> (https://github.com/shadowgate15)",
   "ava": {
     "files": [
