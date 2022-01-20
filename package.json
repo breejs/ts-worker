@@ -61,7 +61,8 @@
   "license": "MIT",
   "main": "src/index.js",
   "peerDependencies": {
-    "bree": "7.x"
+    "bree": "7.x",
+    "tsconfig-paths": "3.x"
   },
   "publishConfig": {
     "access": "public"
