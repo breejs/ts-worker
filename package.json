@@ -38,6 +38,7 @@
     "nyc": "latest",
     "remark-cli": "latest",
     "remark-preset-github": "latest",
+    "tsconfig-paths": "latest",
     "xo": "latest"
   },
   "engines": {
