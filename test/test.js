@@ -1,4 +1,5 @@
 const path = require('path');
+
 const test = require('ava');
 const delay = require('delay');
 const Bree = require('bree');
@@ -16,32 +17,28 @@ const baseConfig = {
   defaultExtension: 'js'
 };
 
-test('will validate job when given ts file string', (t) => {
-  t.notThrows(() => {
-    // eslint-disable-next-line no-unused-vars
-    const bree = new Bree({
-      jobs: ['short.ts'],
-      ...baseConfig
-    });
+test('will validate job when given ts file string', async (t) => {
+  const bree = new Bree({
+    jobs: ['short.ts'],
+    ...baseConfig
   });
+  await t.notThrowsAsync(() => bree.init());
 });
 
-test('will validate job when ".ts" is defined in config', (t) => {
-  t.notThrows(() => {
-    // eslint-disable-next-line no-unused-vars
-    const bree = new Bree({
-      ...baseConfig,
-      jobs: ['short.ts'],
-      acceptedExtensions: ['.ts', '.js', '.mjs']
-    });
+test('will validate job when ".ts" is defined in config', async (t) => {
+  const bree = new Bree({
+    ...baseConfig,
+    jobs: ['short.ts'],
+    acceptedExtensions: ['.ts', '.js', '.mjs']
   });
+  await t.notThrowsAsync(() => bree.init());
 });
 
 test('will run job defined in ts', async (t) => {
   t.plan(2);
 
   const logger = {
-    info: () => {}
+    info() {}
   };
 
   const bree = new Bree({
@@ -50,14 +47,14 @@ test('will run job defined in ts', async (t) => {
     logger
   });
 
-  bree.start();
+  await bree.start();
 
   bree.on('worker created', (name) => {
-    t.true(typeof bree.workers[name] === 'object');
+    t.true(bree.workers.has(name));
   });
 
   bree.on('worker deleted', (name) => {
-    t.true(typeof bree.workers[name] === 'undefined');
+    t.false(bree.workers.has(name));
   });
 
   await delay(100);
@@ -69,7 +66,7 @@ test('will run job defined in js', async (t) => {
   t.plan(2);
 
   const logger = {
-    info: () => {}
+    info() {}
   };
 
   const bree = new Bree({
@@ -78,14 +75,14 @@ test('will run job defined in js', async (t) => {
     logger
   });
 
-  bree.start();
+  await bree.start();
 
   bree.on('worker created', (name) => {
-    t.true(typeof bree.workers[name] === 'object');
+    t.true(bree.workers.has(name));
   });
 
   bree.on('worker deleted', (name) => {
-    t.true(typeof bree.workers[name] === 'undefined');
+    t.false(bree.workers.has(name));
   });
 
   await delay(100);
