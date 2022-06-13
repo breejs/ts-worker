@@ -3,14 +3,6 @@
   "description": "Typescript workers plugin for Bree!",
   "version": "1.1.1",
   "author": "Taylor Schley <taylorschley@me.com> (https://github.com/shadowgate15)",
-  "ava": {
-    "files": [
-      "test/*.js",
-      "test/**/*.js",
-      "!test/jobs"
-    ],
-    "verbose": true
-  },
   "bugs": {
     "url": "https://github.com/breejs/ts-worker/issues",
     "email": "taylorschley@me.com"
@@ -19,30 +11,32 @@
     "Taylor Schley <taylorschley@me.com> (https://github.com/shadowgate15)"
   ],
   "dependencies": {
-    "ts-node": "^10.4.0"
+    "ts-node": "^10.8.1",
+    "tsconfig-paths": "^4.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "latest",
-    "@commitlint/config-conventional": "latest",
-    "ava": "latest",
-    "bree": "latest",
-    "codecov": "latest",
-    "cross-env": "latest",
+    "@commitlint/cli": "^17.0.2",
+    "@commitlint/config-conventional": "^17.0.2",
+    "@types/node": "^17.0.42",
+    "@typescript-eslint/parser": "^5.28.0",
+    "ava": "^4.3.0",
+    "bree": "^9.0.1",
+    "cross-env": "^7.0.3",
     "delay": "^5.0.0",
     "dtslint": "^4.2.1",
-    "eslint": "latest",
-    "eslint-config-xo-lass": "latest",
-    "fixpack": "latest",
-    "husky": "^7.0.0",
-    "lint-staged": "latest",
-    "nyc": "latest",
-    "remark-cli": "latest",
-    "remark-preset-github": "latest",
-    "tsconfig-paths": "latest",
-    "xo": "latest"
+    "eslint": "^8.17.0",
+    "eslint-config-xo-lass": "^2.0.1",
+    "fixpack": "^4.0.0",
+    "husky": "^8.0.1",
+    "lint-staged": "^13.0.1",
+    "nyc": "^15.1.0",
+    "remark-cli": "^10.0.1",
+    "remark-preset-github": "^4.0.4",
+    "typescript": "^4.7.3",
+    "xo": "^0.50.0"
   },
   "engines": {
-    "node": ">= 12.11.0"
+    "node": ">= 12.11"
   },
   "files": [
     "src",
@@ -62,8 +56,8 @@
   "license": "MIT",
   "main": "src/index.js",
   "peerDependencies": {
-    "bree": ">=7.0.0",
-    "tsconfig-paths": ">=3 <4"
+    "bree": ">=9.0.0",
+    "tsconfig-paths": ">= 4"
   },
   "publishConfig": {
     "access": "public"
@@ -73,51 +67,14 @@
     "url": "https://github.com/breejs/ts-worker"
   },
   "scripts": {
-    "ava": "cross-env NODE_ENV=test ava",
-    "coverage": "nyc report --reporter=text-lcov > coverage.lcov && codecov",
-    "dtslint": "cross-env NODE_ENV=test dtslint types",
-    "lint": "yarn run lint:js && yarn run lint:md",
+    "lint": "npm run lint:js && npm run lint:ts && npm run lint:md",
     "lint:js": "xo",
     "lint:md": "remark . -qfo",
+    "lint:ts": "cross-env NODE_ENV=test dtslint types",
     "prepare": "husky install",
-    "pretest": "yarn run lint",
-    "test": "yarn run ava && yarn run dtslint",
-    "test-coverage": "cross-env NODE_ENV=test nyc yarn run test"
+    "pretest": "npm run lint",
+    "test": "npm run test-coverage",
+    "test-coverage": "cross-env NODE_ENV=test nyc ava"
   },
-  "types": "types",
-  "xo": {
-    "prettier": true,
-    "space": true,
-    "extends": [
-      "xo-lass"
-    ],
-    "rules": {
-      "import/extensions": "off",
-      "unicorn/prefer-module": "off"
-    },
-    "overrides": [
-      {
-        "files": [
-          "*.ts"
-        ],
-        "parserOptions": {
-          "project": [
-            "types/tsconfig.json"
-          ]
-        }
-      },
-      {
-        "files": [
-          "types/tests.ts"
-        ],
-        "rules": {
-          "@typescript-eslint/no-unused-vars": "off",
-          "@typescript-eslint/no-empty-function": "off",
-          "@typescript-eslint/no-unsafe-assignment": "off",
-          "@typescript-eslint/no-unsafe-call": "off"
-        }
-      }
-    ],
-    "parser": "@typescript-eslint/parser"
-  }
+  "types": "types"
 }

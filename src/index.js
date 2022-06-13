@@ -7,11 +7,11 @@ function plugin(opts, Bree) {
   const oldInit = Bree.prototype.init;
 
   // define accepted extensions
-  Bree.prototype.init = function () {
+  Bree.prototype.init = async function () {
     if (!this.config.acceptedExtensions.includes('.ts'))
       this.config.acceptedExtensions.push('.ts');
 
-    oldInit.bind(this)();
+    return oldInit.call(this);
   };
 
   const oldCreateWorker = Bree.prototype.createWorker;

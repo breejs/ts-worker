@@ -1,40 +1,29 @@
-name: CI
-
-on: [push, pull_request]
-
+on:
+  - push
+  - pull_request
 jobs:
-  test-coverage:
+  test:
     runs-on: ${{ matrix.os }}
-
     strategy:
       matrix:
         os:
           - ubuntu-latest
+          - macos-latest
+          # TODO: re-enable windows
+          #- windows-latest
         node_version:
           - 12
           - 14
           - 16
-
+          - 18
     name: Node ${{ matrix.node_version }} on ${{ matrix.os }}
-
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-
+      - uses: actions/checkout@v3
       - name: Setup node
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node_version }}
-
-      - name: Install yarn
-        run: npm install -g yarn
-
       - name: Install dependencies
-        run: yarn --frozen-lockfile
-
+        run: npm install
       - name: Run tests
-        run: yarn test-coverage
-
-      - name: Uninstall yarn
-        if: always()
-        run: npm uninstall -g yarn
+        run: npm run test-coverage
